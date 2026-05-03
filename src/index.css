@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  :root {
+    --background: #f8fafc;
+    --foreground: #0f172a;
+    --primary: #3b82f6;
+    --primary-foreground: #ffffff;
+    --card: #ffffff;
+    --card-foreground: #0f172a;
+    --border: #e2e8f0;
+    --muted: #f1f5f9;
+    --muted-foreground: #64748b;
+  }
+
+  .dark {
+    --background: #0f172a;
+    --foreground: #f8fafc;
+    --primary: #3b82f6;
+    --primary-foreground: #ffffff;
+    --card: #1e293b;
+    --card-foreground: #f8fafc;
+    --border: #334155;
+    --muted: #1e293b;
+    --muted-foreground: #94a3b8;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-[color:var(--border)];
+  }
+  body {
+    @apply bg-[color:var(--background)] text-[color:var(--foreground)] transition-colors duration-300;
+  }
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #resume-preview, #resume-preview * {
+    visibility: visible;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  #resume-preview {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    min-height: auto;
+  }
+}
